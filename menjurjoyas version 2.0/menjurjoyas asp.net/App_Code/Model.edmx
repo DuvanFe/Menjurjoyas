@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_MENJUR_JOYASModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BD_MENJUR_JOYASModelStoreContainer">
+          <EntitySet Name="Administradores" EntityType="BD_MENJUR_JOYASModel.Store.Administradores" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Clientes" EntityType="BD_MENJUR_JOYASModel.Store.Clientes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contacto" EntityType="BD_MENJUR_JOYASModel.Store.Contacto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Factura" EntityType="BD_MENJUR_JOYASModel.Store.Factura" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Producto" EntityType="BD_MENJUR_JOYASModel.Store.Producto" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Administradores">
+          <Key>
+            <PropertyRef Name="ID_Administrador" />
+          </Key>
+          <Property Name="ID_Administrador" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NombresAdm" Type="varchar" MaxLength="20" />
+          <Property Name="ApellidosAdm" Type="varchar" MaxLength="20" />
+          <Property Name="Documento" Type="varchar" MaxLength="20" />
+          <Property Name="Dirección" Type="varchar" MaxLength="20" />
+          <Property Name="Teléfono" Type="varchar" MaxLength="20" />
+          <Property Name="Correo" Type="varchar" MaxLength="20" />
+          <Property Name="Celular" Type="varchar" MaxLength="20" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="40" />
+          <Property Name="Usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NombresCli" Type="varchar" MaxLength="20" />
+          <Property Name="ApellidosCli" Type="varchar" MaxLength="20" />
+          <Property Name="Documento" Type="varchar" MaxLength="20" />
+          <Property Name="Dirección" Type="varchar" MaxLength="20" />
+          <Property Name="Teléfono" Type="varchar" MaxLength="20" />
+          <Property Name="Correo" Type="varchar" MaxLength="20" />
+          <Property Name="Celular" Type="varchar" MaxLength="20" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="40" />
+          <Property Name="Usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="IDContacto" />
+          </Key>
+          <Property Name="IDContacto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NomContacto" Type="varchar" MaxLength="80" />
+          <Property Name="EmailContacto" Type="varchar" MaxLength="40" />
+          <Property Name="TelContacto" Type="varchar" MaxLength="20" />
+          <Property Name="MensajeContacto" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="IDFactura" />
+          </Key>
+          <Property Name="IDFactura" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDAdministrador" Type="int" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="IDCliente" Type="int" />
+          <Property Name="IDProducto" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Total" Type="int" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IDProducto" />
+          </Key>
+          <Property Name="IDProducto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePro" Type="varchar" MaxLength="40" />
+          <Property Name="CantidadPro" Type="varchar" MaxLength="20" />
+          <Property Name="Referencia" Type="varchar" MaxLength="40" />
+          <Property Name="DescripcionPro" Type="varchar" MaxLength="50" />
+          <Property Name="Peso" Type="varchar" MaxLength="20" />
+          <Property Name="Precio" Type="real" />
+        </EntityType>
+        <Function Name="insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombresCli" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidosCli" Type="varchar" Mode="In" />
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="Dirección" Type="varchar" Mode="In" />
+          <Parameter Name="Teléfono" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Celular" Type="varchar" Mode="In" />
+          <Parameter Name="Ciudad" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoginAdm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoginCli" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="loginUs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RegCli" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombresCli" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidosCli" Type="varchar" Mode="In" />
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="Dirección" Type="varchar" Mode="In" />
+          <Parameter Name="Teléfono" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Celular" Type="varchar" Mode="In" />
+          <Parameter Name="Ciudad" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="varchar" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_MENJUR_JOYASModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BD_MENJUR_JOYASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administradores" EntityType="BD_MENJUR_JOYASModel.Administradores" />
+          <EntitySet Name="Clientes" EntityType="BD_MENJUR_JOYASModel.Clientes" />
+          <EntitySet Name="Contacto" EntityType="BD_MENJUR_JOYASModel.Contacto" />
+          <EntitySet Name="Factura" EntityType="BD_MENJUR_JOYASModel.Factura" />
+          <EntitySet Name="Producto" EntityType="BD_MENJUR_JOYASModel.Producto" />
+        </EntityContainer>
+        <EntityType Name="Administradores">
+          <Key>
+            <PropertyRef Name="ID_Administrador" />
+          </Key>
+          <Property Name="ID_Administrador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombresAdm" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ApellidosAdm" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Documento" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Dirección" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Teléfono" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Celular" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Usuario" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ID_Cliente" />
+          </Key>
+          <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombresCli" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ApellidosCli" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Documento" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Dirección" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Teléfono" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Celular" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Usuario" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="IDContacto" />
+          </Key>
+          <Property Name="IDContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomContacto" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="EmailContacto" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="TelContacto" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="MensajeContacto" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="IDFactura" />
+          </Key>
+          <Property Name="IDFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDAdministrador" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" />
+          <Property Name="IDCliente" Type="Int32" />
+          <Property Name="IDProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IDProducto" />
+          </Key>
+          <Property Name="IDProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePro" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="CantidadPro" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Referencia" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="DescripcionPro" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Peso" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Precio" Type="Single" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_MENJUR_JOYASModelStoreContainer" CdmEntityContainer="BD_MENJUR_JOYASEntities">
+          <EntitySetMapping Name="Administradores">
+            <EntityTypeMapping TypeName="BD_MENJUR_JOYASModel.Administradores">
+              <MappingFragment StoreEntitySet="Administradores">
+                <ScalarProperty Name="ID_Administrador" ColumnName="ID_Administrador" />
+                <ScalarProperty Name="NombresAdm" ColumnName="NombresAdm" />
+                <ScalarProperty Name="ApellidosAdm" ColumnName="ApellidosAdm" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Teléfono" ColumnName="Teléfono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="BD_MENJUR_JOYASModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+                <ScalarProperty Name="NombresCli" ColumnName="NombresCli" />
+                <ScalarProperty Name="ApellidosCli" ColumnName="ApellidosCli" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Teléfono" ColumnName="Teléfono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacto">
+            <EntityTypeMapping TypeName="BD_MENJUR_JOYASModel.Contacto">
+              <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="IDContacto" ColumnName="IDContacto" />
+                <ScalarProperty Name="NomContacto" ColumnName="NomContacto" />
+                <ScalarProperty Name="EmailContacto" ColumnName="EmailContacto" />
+                <ScalarProperty Name="TelContacto" ColumnName="TelContacto" />
+                <ScalarProperty Name="MensajeContacto" ColumnName="MensajeContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="BD_MENJUR_JOYASModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+                <ScalarProperty Name="IDAdministrador" ColumnName="IDAdministrador" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="IDProducto" ColumnName="IDProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="BD_MENJUR_JOYASModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="IDProducto" ColumnName="IDProducto" />
+                <ScalarProperty Name="NombrePro" ColumnName="NombrePro" />
+                <ScalarProperty Name="CantidadPro" ColumnName="CantidadPro" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="DescripcionPro" ColumnName="DescripcionPro" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="BD_MENJUR_JOYASModel.Administradores" Width="1.5" PointX="0.75" PointY="0.75" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_MENJUR_JOYASModel.Clientes" Width="1.5" PointX="2.75" PointY="0.75" Height="3.1340950520833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_MENJUR_JOYASModel.Contacto" Width="1.5" PointX="4.75" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_MENJUR_JOYASModel.Factura" Width="1.5" PointX="0.75" PointY="4.75" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_MENJUR_JOYASModel.Producto" Width="1.5" PointX="2.75" PointY="4.75" Height="2.3648893229166656" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
